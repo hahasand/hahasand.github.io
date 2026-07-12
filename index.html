@@ -1,0 +1,57 @@
+<!doctype html>
+<title>fatesealed</title>
+
+<style>
+
+</style>
+
+<script src=jssets.js></script>
+
+<script>
+
+function goodCards(cards) {
+    if (cards.length<1) { return false; }
+    if (cards.length<1) { return false; }    
+/*
+    for (card of set.cards) {
+        if (!/^\d$/.test(card.number)) { // if card number isn't just digits
+            return false;
+        }
+    }
+*/
+    return true;
+}
+
+function deal() {
+    let bday = Date.UTC(2009, 4, 13);
+    let epoch = Date.UTC(1800, 1, 1);
+    let pocky = (bday - epoch) / 8.64e7;
+    console.log(pocky);
+    for (set of SETS) {
+        if (!goodCards(set.cards)) { continue; }
+        if (
+            set.type=='promo' ||
+            set.type=='memorabilia' ||
+            set.type=='vanguard' ||
+            set.type=='minigame' ||
+            set.type=='token' ||
+            set.type=='archenemy'
+        ) {
+            continue;
+        }
+        let fatedCard = set.cards[pocky % set.cards.length];
+        console.log(set.cards.length + '    ' + set.name + ' ∋ ' + fatedCard.name);
+        li = document.createElement('li');
+        li.innerText = set.name + ': ' + fatedCard.name;
+        result.append(li);
+    }
+    console.log(pocky);
+}
+
+</script>
+
+
+<b onclick=deal()>click meeee</b>
+
+<ol id=result></ol>
+

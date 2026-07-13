@@ -12,13 +12,7 @@
 function goodCards(cards) {
     if (cards.length<1) { return false; }
     if (cards.length<1) { return false; }    
-/*
-    for (card of set.cards) {
-        if (!/^\d$/.test(card.number)) { // if card number isn't just digits
-            return false;
-        }
-    }
-*/
+
     return true;
 }
 
@@ -35,7 +29,9 @@ function deal() {
             set.type=='vanguard' ||
             set.type=='minigame' ||
             set.type=='token' ||
-            set.type=='archenemy'
+            set.type=='archenemy' ||
+            set.type=='box' ||
+            set.name.includes("Heroes of the Realm") == true
         ) {
             continue;
         }

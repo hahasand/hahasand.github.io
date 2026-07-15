@@ -17,10 +17,11 @@ function goodCards(cards) {
 }
 
 function deal() {
-    let bday = Date.UTC(2009, 4, 13);
+    let bday = datepicker.valueAsDate; //Date.UTC(2009, 4, 13);
     let epoch = Date.UTC(1800, 1, 1);
     let pocky = (bday - epoch) / 8.64e7;
-    console.log(pocky);
+    console.log('pocky number: ' + pocky);
+    result.innerHTML = '';
     for (set of SETS) {
         if (!goodCards(set.cards)) { continue; }
         if (
@@ -46,8 +47,28 @@ function deal() {
 
 </script>
 
+<style>
+main {
+    max-width: 39em;
+    margin: auto;
+}
+input {
+    font-size: xx-large;
+}
+p {
+    text-align: center;
+}
+</style>
 
-<b onclick=deal()>click meeee</b>
+<main>
+
+<p>This page calculates your allowed pool for the <b>fatesealed</b> format.</p>
+
+<form onsubmit=deal()>
+    <p><input type=date id=datepicker required>
+    <p><input type=submit formmethod=dialog value=backtell>
+</form>
 
 <ol id=result></ol>
 
+</main>

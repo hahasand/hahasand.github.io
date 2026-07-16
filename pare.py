@@ -16,7 +16,7 @@ for jsonpath in jsonpaths:
             print('', card['number'], card['name'])
         # Make simplified data for js
         jsset = {}
-        for k in ['name','releaseDate','type','code']: jsset[k] = d[k]
+        for k in ['name','releaseDate','type','code','isOnlineOnly']: jsset[k] = d[k]
         jsset['cards'] = []
         for card in d['cards']:
             jscard = {}

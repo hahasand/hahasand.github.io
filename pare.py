@@ -1,7 +1,7 @@
 
 import json, os
 
-jsonpaths = [i for i in os.listdir() if i.endswith('.json')]
+jsonpaths = ['jsons/'+i for i in os.listdir('jsons') if i.endswith('.json')]
 
 #with open('HA4.json') as f:
 #    j = json.load(f)
@@ -20,7 +20,7 @@ for jsonpath in jsonpaths:
         jsset['cards'] = []
         for card in d['cards']:
             jscard = {}
-            for k in ['number','name']: jscard[k] = card[k]
+            for k in ['number','name','types']: jscard[k] = card[k]
             jsset['cards'].append(jscard)
         jssets.append(jsset)
 

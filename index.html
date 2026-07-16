@@ -16,8 +16,8 @@ function deal() {
     let bday = datepicker.valueAsDate; //Date.UTC(2009, 4, 13);
     let epoch = Date.UTC(1800, 1, 1);
     let pocky = (bday - epoch) / 8.64e7;
-    console.log('pocky number: ' + pocky);
     result.innerHTML = '';
+    let lands = 0;
     for (set of SETS) {
         if (!goodCards(set.cards)) { continue; }
         if (
@@ -33,12 +33,15 @@ function deal() {
             continue;
         }
         let fatedCard = set.cards[pocky % set.cards.length];
-        console.log(set.cards.length + '    ' + set.name + ' ∋ ' + fatedCard.name);
+        // console.log(set.cards.length + '    ' + set.name + ' ∋ ' + fatedCard.name);
         li = document.createElement('li');
         li.innerText = set.name + ': ' + fatedCard.name;
         result.append(li);
+        if (fatedCard.types.includes('Land')) {
+            lands +=1
+        }
     }
-    console.log(pocky);
+    console.log(lands + ' lands');
 }
 
 </script>
@@ -47,9 +50,31 @@ function deal() {
 html {
     color-scheme: light dark;
 }
+body {
+    
+}
+mesmeric-sliver {
+    content: '';
+    background-image: url(sliver.jpg);
+    background-size: 100em;
+    background-position-x: 9.9em;
+    background-position-y: 1em;
+    transform: rotate(-9.8deg);
+    width: 100em; height: 100em;
+    display: block;
+    z-index: -1;
+    position: fixed;
+    left: calc(50vw - 93em);
+    scale: 3;
+    filter: blur(.1em) contrast(8) contrast(.5);
+}
 main {
     max-width: 39em;
     margin: auto;
+    border: outset;
+    padding: 1em;
+    background-color: color-mix(Canvas 50%, transparent 50%);
+    backdrop-filter: blur(1em);
 }
 input {
     font-size: xx-large;
@@ -59,13 +84,28 @@ p {
 }
 </style>
 
+<mesmeric-sliver></mesmeric-sliver>
 <main>
 
 <p>This page calculates your allowed pool for the <b>fatesealed</b> format.</p>
 
+<p><b>Fatesealed</b> is a format that umm uhmmm uh.. well um. well I don't know much about mtg but um, bweh, um,
+
+<p><b>Fatesealed</b> is a Limited format like <b><a href=https://magic.wizards.com/en/formats/sealed-deck>sealed</a></b>, except:
+<ul>
+<li>You build a deck from your <b>fated cards</b>, calculated below
+<li>You can use up to <b>4</b> copies of every <b>fated card</b>
+</ul>
+
+<p>The deck size is um. well i don't know yet we need to playtest
+
+<details><summary>extended explanation for those who know not sealed??</summary>
+idk
+</details>
+
 <form onsubmit=deal()>
     <p><input type=date id=datepicker required>
-    <p><input type=submit formmethod=dialog value=backtell>
+    <p><input type=submit formmethod=dialog value='reveal fate'>
 </form>
 
 <ol id=result></ol>

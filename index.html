@@ -28,6 +28,8 @@ function deal() {
             set.type=='token' ||
             set.type=='archenemy' ||
             set.type=='box' ||
+            set.isOnlineOnly==true ||
+            set.name.includes("Special Guest") == true ||
             set.name.includes("Heroes of the Realm") == true
         ) {
             continue;

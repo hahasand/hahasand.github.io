@@ -34,7 +34,7 @@ function deal() {
             set.type=='token' ||
             set.type=='archenemy' ||
             (set.type=='box' && set.code!='PSDG') ||
-            set.isOnlineOnly==true && set.code!='PSDG') ||
+            (set.isOnlineOnly==true && set.code!='PSDG') ||
             // Card types not used by this format or which need to be implemented another way:
             (set.name.includes("Planes") && set.name.includes("Planechase")) ||
             set.name.includes("Unknown Planechase") ||

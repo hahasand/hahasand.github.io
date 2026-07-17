@@ -11,14 +11,13 @@ jssets = [] # list of sets for JavaScript to use
 for jsonpath in jsonpaths:
     with open(jsonpath) as file:
         d = json.load(file)['data']
-        print(d['releaseDate'], d['name'], len(d['cards']), d['type'], jsonpath)
-        for card in d['cards']:
-            print('', card['number'], card['name'])
+        #print(d['releaseDate'], d['name'], len(d['cards']), d['type'], jsonpath)
         # Make simplified data for js
         jsset = {}
         for k in ['name','releaseDate','type','code','isOnlineOnly']: jsset[k] = d[k]
         jsset['cards'] = []
         for card in d['cards']:
+            if card.get('hasContentWarning'): continue
             jscard = {}
             for k in ['number','name','types','colors']: jscard[k] = card[k]
             jscard['scryfallId'] = card['identifiers']['scryfallId']

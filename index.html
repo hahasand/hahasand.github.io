@@ -45,11 +45,20 @@ function deal() {
         li = document.createElement('li');
         li.innerText = set.name + ': ' + fatedCard.name;
         result.append(li);
+        img = document.createElement('img');
+        img.src = src(fatedCard.scryfallId, 'small');
+        img.alt = fatedCard.name;
+        img.title = fatedCard.name + ', #' + fatedCard.number + ' from ' + set.name;
+        result.append(img);
         if (fatedCard.types.includes('Land')) {
             lands +=1
         }
     }
     console.log(lands + ' lands');
+}
+
+function src(scryfallId, size) {
+    return 'https://cards.scryfall.io/' + size + '/front/' + scryfallId[0] + '/' + scryfallId[1] + '/' + scryfallId + '.jpg';
 }
 
 </script>
@@ -81,8 +90,8 @@ main {
     margin: auto;
     border: outset;
     padding: 1em;
-    background-color: color-mix(Canvas 50%, transparent 50%);
-    backdrop-filter: blur(1em);
+    background-color: color-mix(Canvas 50%, transparent);
+    backdrop-filter: blur(2em);
 }
 input {
     font-size: xx-large;

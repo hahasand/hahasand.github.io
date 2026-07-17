@@ -20,7 +20,7 @@ for jsonpath in jsonpaths:
         jsset['cards'] = []
         for card in d['cards']:
             jscard = {}
-            for k in ['number','name','types']: jscard[k] = card[k]
+            for k in ['number','name','types','colors']: jscard[k] = card[k]
             jscard['scryfallId'] = card['identifiers']['scryfallId']
             jsset['cards'].append(jscard)
         jssets.append(jsset)

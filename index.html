@@ -140,7 +140,7 @@ main {
     margin: auto;
     border: outset;
     padding: 1em;
-    background-color: color-mix(Canvas 50%, transparent);
+    background-color: color-mix(in srgb, Canvas 50%, transparent); /* ignored on safari? */
     backdrop-filter: blur(2em);
 }
 #datepicker, #submitButton {

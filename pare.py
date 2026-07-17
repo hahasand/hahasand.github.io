@@ -25,6 +25,10 @@ for jsonpath in jsonpaths:
             jsset['cards'].append(jscard)
         jssets.append(jsset)
 
+def sortkey(jsset):
+    return jsset['releaseDate']
+
+jssets.sort(key=sortkey)
 
 with open('jssets.js','w') as file:
     file.write('SETS=' + json.dumps(jssets,indent=1))

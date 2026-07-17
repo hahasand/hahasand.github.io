@@ -86,12 +86,12 @@ function deal() {
         li.style = '--i:' + cardPos++;
         result.style = '--n:' + cardPos;
         front = document.createElement('img');
-        front.src = src(card.scryfallId, 'small');
+        front.src = frontSrc(card.scryfallId, 'small');
         front.alt = card.name;
         front.title = card.name + ', #' + card.number + ' from ' + set.name;
         front.classList.add('front');
         back = document.createElement('img');
-        back.src = 'https://backs.scryfall.io/small/0/a/0aeebaf5-8c7d-4636-9e82-8c27447861f7.jpg';
+        back.src = backSrc(card['scryfallCardBackId'] || '0aeebaf5-8c7d-4636-9e82-8c27447861f7', 'small');
         back.classList.add('back');
         li.append(front); li.append(back);
         if (card.types.includes('Land')) {
@@ -103,8 +103,11 @@ function deal() {
     console.log(lands + ' lands');
 }
 
-function src(scryfallId, size) {
+function frontSrc(scryfallId, size) {
     return 'https://cards.scryfall.io/' + size + '/front/' + scryfallId[0] + '/' + scryfallId[1] + '/' + scryfallId + '.jpg';
+}
+function backSrc(scryfallCardBackId, size) {
+    return 'https://backs.scryfall.io/' + size + '/' + scryfallCardBackId[0] + '/' + scryfallCardBackId[1] + '/' + scryfallCardBackId + '.jpg';
 }
 
 function copyArchidekture() {

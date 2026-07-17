@@ -18,9 +18,13 @@ for jsonpath in jsonpaths:
         jsset['cards'] = []
         for card in d['cards']:
             if card.get('hasContentWarning'): continue
+            if 'scryfallCardBackId' in card['identifiers'] and card['identifiers']['scryfallCardBackId'][0] != '0':
+                print(card['name'], card['identifiers']['scryfallCardBackId'])
             jscard = {}
             for k in ['number','name','types','colors']: jscard[k] = card[k]
             jscard['scryfallId'] = card['identifiers']['scryfallId']
+            if 'scryfallCardBackId' in card['identifiers'] and card['identifiers']['scryfallCardBackId'] != '0aeebaf5-8c7d-4636-9e82-8c27447861f7':
+                jscard['scryfallCardBackId'] = card['identifiers']['scryfallCardBackId']
             jsset['cards'].append(jscard)
         jssets.append(jsset)
 

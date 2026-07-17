@@ -90,9 +90,7 @@ function copyArchidekture() {
 html {
     color-scheme: light dark;
 }
-body {
-    
-}
+
 mesmeric-sliver {
     content: '';
     background-image: url(sliver.jpg);
@@ -134,8 +132,19 @@ h1, p {
     }
 }
 
-body:has(#result:empty) #exportButton { display: none; }
-#exportButton { margin-top: 1em; }
+body:has(#result:empty) #resultSection { display: none; }
+.lil { width: 1.5em; vertical-align: middle; }
+body:has(#boxW:not(:checked)) li.W { display: none; }
+body:has(#boxU:not(:checked)) li.U { display: none; }
+body:has(#boxB:not(:checked)) li.B { display: none; }
+body:has(#boxR:not(:checked)) li.R { display: none; }
+body:has(#boxG:not(:checked)) li.G { display: none; }
+filter-boxes {
+    display: inline-block;
+    border: 1px solid CanvasText;
+    padding: .5em; margin-left: .5em;
+    label { margin: .5em; }
+}
 </style>
 
 <mesmeric-sliver></mesmeric-sliver>
@@ -166,8 +175,37 @@ idk
     <p><input type=submit formmethod=dialog value='reveal fate' id=submitButton>
 </form>
 
-<p style=text-align:center><input type=button value='Export for Archidekt' id=exportButton onclick=copyArchidekture()></input>
+<section id=resultSection>
 
-<ol id=result></ol>
+    <hr style=margin:2em>
+
+    <p style=text-align:center><input type=button value='Export for Archidekt' id=exportButton onclick=copyArchidekture()></input>
+
+    <p>Show:
+    <filter-boxes>
+        <label>
+            <img src=https://svgs.scryfall.io/card-symbols/W.svg alt=White class=lil>
+            <input type=checkbox id=boxW checked autocomplete=off>
+        </label>
+        <label>
+            <img src=https://svgs.scryfall.io/card-symbols/U.svg alt=Blue class=lil>
+            <input type=checkbox id=boxU checked autocomplete=off>
+        </label>
+        <label>
+            <img src=https://svgs.scryfall.io/card-symbols/B.svg alt=Black class=lil>
+            <input type=checkbox id=boxB checked autocomplete=off>
+        </label>
+        <label>
+            <img src=https://svgs.scryfall.io/card-symbols/R.svg alt=Red class=lil>
+            <input type=checkbox id=boxR checked autocomplete=off>
+        </label>
+        <label>
+            <img src=https://svgs.scryfall.io/card-symbols/G.svg alt=Green class=lil>
+            <input type=checkbox id=boxG checked autocomplete=off>
+        </label>
+    </filter-boxes>
+    <ol id=result></ol>
+
+</section>
 
 </main>

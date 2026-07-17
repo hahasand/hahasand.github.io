@@ -27,7 +27,7 @@ function deal() {
         if (!goodCards(set.cards)) { continue; }
         if (
             cday.getTime() < rday.getTime() ||
-            set.type=='promo' ||
+            set.type=='promo' && (set.code!='PHPR' || set.code!='PSDG')||
             set.type=='memorabilia' ||
             set.type=='vanguard' ||
             set.type=='minigame' ||

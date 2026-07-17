@@ -1,5 +1,5 @@
 <!doctype html>
-<title>fatesealed</title>
+<title>Fatesealed calculator</title>
 
 <script src=jssets.js></script>
 
@@ -53,6 +53,7 @@ function deal() {
         li = document.createElement('li');
         //li.innerText = set.name + ': ' + fatedCard.name;
         result.append(li);
+        li.classList.add(...fatedCard.colors);
         img = document.createElement('img');
         img.src = src(fatedCard.scryfallId, 'small');
         img.alt = fatedCard.name;
@@ -104,7 +105,7 @@ main {
 input {
     font-size: xx-large;
 }
-p {
+h1, p {
     text-align: center;
 }
 
@@ -122,6 +123,8 @@ p {
 
 <mesmeric-sliver></mesmeric-sliver>
 <main>
+
+<h1>Fatesealed calculator</h1>
 
 <p>This page calculates your allowed pool for the <b>fatesealed</b> format.</p>
 

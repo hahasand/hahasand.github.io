@@ -15,7 +15,7 @@ function goodCards(cards) {
 archidekture = "";
 
 function deal() {
-    //const cday = new Date();
+    const cday = new Date();
     let bday = datepicker.valueAsDate; //Date.UTC(2009, 4, 13);
     let epoch = Date.UTC(1800, 1, 1);
     let pocky = (bday - epoch) / 8.64e7;
@@ -23,10 +23,10 @@ function deal() {
     let lands = 0;
     archidekture = "";
     for (set of SETS) {
-        //let rday = set.releaseDate; 
+        let rday = new Date(set.releaseDate); 
         if (!goodCards(set.cards)) { continue; }
         if (
-            //cday.getTime() < rday.getTime() ||
+            cday.getTime() < rday.getTime() ||
             set.type=='promo' ||
             set.type=='memorabilia' ||
             set.type=='vanguard' ||

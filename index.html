@@ -54,21 +54,21 @@ function deal() {
         ) {
             continue;
         }
-        let fatedCard = set.cards[pocky % set.cards.length];
-        // console.log(set.cards.length + '    ' + set.name + ' ∋ ' + fatedCard.name);
+        let card = set.cards[pocky % set.cards.length];
+        // console.log(set.cards.length + '    ' + set.name + ' ∋ ' + card.name);
         li = document.createElement('li');
-        //li.innerText = set.name + ': ' + fatedCard.name;
+        //li.innerText = set.name + ': ' + card.name;
         result.append(li);
-        li.classList.add(...fatedCard.colors);
+        li.classList.add(...card.colors);
         img = document.createElement('img');
-        img.src = src(fatedCard.scryfallId, 'small');
-        img.alt = fatedCard.name;
-        img.title = fatedCard.name + ', #' + fatedCard.number + ' from ' + set.name;
+        img.src = src(card.scryfallId, 'small');
+        img.alt = card.name;
+        img.title = card.name + ', #' + card.number + ' from ' + set.name;
         li.append(img);
-        if (fatedCard.types.includes('Land')) {
+        if (card.types.includes('Land')) {
             lands +=1
         }
-        archidekture += '1 ' + fatedCard.name + ' (' + set.code + ') ' + fatedCard.number + '\r\n';
+        archidekture += '1 ' + card.name + ' (' + set.code + ') ' + card.number + '\r\n';
     }
     console.log(lands + ' lands');
 }

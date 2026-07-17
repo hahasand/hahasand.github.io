@@ -1,5 +1,6 @@
 <!doctype html>
 <title>FateSealed</title>
+<meta name=viewport content="width=device-width, initial-scale=1.0">
 
 <script src=jssets.js></script>
 
@@ -21,6 +22,7 @@ function deal() {
     let pocky = (bday - epoch) / 8.64e7;
     result.innerHTML = '';
     let lands = 0;
+    let cardPos = 0;
     archidekture = "";
     for (set of SETS) {
         let rday = new Date(set.releaseDate); 
@@ -77,11 +79,17 @@ function deal() {
         //li.innerText = set.name + ': ' + card.name;
         result.append(li);
         li.classList.add(...card.colors);
-        img = document.createElement('img');
-        img.src = src(card.scryfallId, 'small');
-        img.alt = card.name;
-        img.title = card.name + ', #' + card.number + ' from ' + set.name;
-        li.append(img);
+        li.style = '--i:' + cardPos++;
+        result.style = '--n:' + cardPos;
+        front = document.createElement('img');
+        front.src = src(card.scryfallId, 'small');
+        front.alt = card.name;
+        front.title = card.name + ', #' + card.number + ' from ' + set.name;
+        front.classList.add('front');
+        back = document.createElement('img');
+        back.src = 'https://backs.scryfall.io/small/0/a/0aeebaf5-8c7d-4636-9e82-8c27447861f7.jpg';
+        back.classList.add('back');
+        li.append(front); li.append(back);
         if (card.types.includes('Land')) {
             lands +=1
         }
@@ -107,7 +115,9 @@ function copyArchidekture() {
 html {
     color-scheme: light dark;
 }
-
+body {
+    perspective: 413px;
+}
 mesmeric-sliver {
     content: '';
     background-image: url(sliver.jpg);
@@ -139,16 +149,60 @@ h1, p {
 }
 
 #result {
-    text-align: center;
     padding: 0;
     line-height: 0;
+    perspective-origin: top;
+    perspective: 100vw;
+    transform-style: preserve-3d;
+    display: grid;
+
+    /* Can't calc unitless quotients >_<" https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/calc#browser_compatibility  */
+    --cols: 4;
+    @media (max-width: 640px) { --cols: 3; }
+    @media (max-width: 490px) { --cols: 2; }
+    @media (max-width: 340px) { --cols: 1; }
+
+    grid-template-columns: repeat(var(--cols), 1fr);
     li {
-        display: inline-block;
+        display: block;
+        text-align: center;
         min-width: 3em;
-        margin: .1em;
+        margin: var(--margin);
         img {
             border-radius: 7px;
+            &.front { position: absolute; }
+            &.back { transform: rotateY(180deg); }
+            backface-visibility: hidden;
         }
+        position: relative;
+        animation-name: flourish;
+        animation-fill-mode: both;
+        animation-duration: calc(2s + 1ms * var(--i));
+        animation-delay: calc(6s * pow((var(--i) + .5), .1) - 5s);
+        --h: 204px;
+        --w: 146px;
+        --margin: .1em;
+        --row: round(down, calc(var(--i) / var(--cols)));
+        --col: mod(var(--i), var(--cols));
+        --y: calc(var(--row) * (var(--h) + var(--margin)));
+        --initial-z: calc(-.6px * (var(--n) - var(--i)));
+        transform-style: preserve-3d; /*?*/
+    }
+}
+
+@keyframes flourish {
+    0% {
+        bottom: calc(var(--y) + var(--h) * pi);
+        right: calc(100% * (var(--col) - var(--cols) / 2 + 0.5));
+        transform: rotateX(180deg) translateZ(var(--initial-z));
+    }
+    50% {
+        transform: translateZ(calc(var(--initial-z) + var(--h) * 4)) rotateX(-55deg);
+    }
+    to {
+        bottom: 0;
+        right: 0;
+        transform: none;
     }
 }
 

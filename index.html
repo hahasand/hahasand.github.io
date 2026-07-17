@@ -54,7 +54,22 @@ function deal() {
         ) {
             continue;
         }
-        let card = set.cards[pocky % set.cards.length];
+        if (
+            // Dupe Sets
+            set.code=="2ED" || 
+            set.code=="SUM" || 
+            set.code=="pca" || 
+            set.code=="cmb2"|| 
+            set.code=="dvd"|| 
+            set.code=="gvl"|| 
+            // for some reason JVC is not a duplicate of dd2???
+            set.code=="evg"
+        ) {
+            pshift = Math.floor((set.cards.length / 2))
+        } else {
+            pshift = 0
+        }
+        let card = set.cards[(pocky + pshift) % set.cards.length];
         // console.log(set.cards.length + '    ' + set.name + ' ∋ ' + card.name);
         li = document.createElement('li');
         //li.innerText = set.name + ': ' + card.name;

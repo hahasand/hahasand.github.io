@@ -65,9 +65,9 @@ function deal() {
             // for some reason JVC is not a duplicate of dd2???
             set.code=="evg"
         ) {
-            pshift = Math.floor((set.cards.length / 2))
+            pshift = Math.floor((set.cards.length / 2));
         } else {
-            pshift = 0
+            pshift = 0;
         }
         let card = set.cards[(pocky + pshift) % set.cards.length];
         // console.log(set.cards.length + '    ' + set.name + ' ∋ ' + card.name);

@@ -15,6 +15,10 @@ function goodCards(cards) {
 
 archidekture = "";
 
+function tryDeal() {
+    try { deal(); } catch (e) { alert(e); }
+}
+
 function deal() {
     const cday = new Date();
     let bday = datepicker.valueAsDate; //Date.UTC(2009, 4, 13);
@@ -237,7 +241,7 @@ filter-boxes {
 TBD
 </details>
 
-<form onsubmit=deal() style=text-align:center>
+<form onsubmit=tryDeal() style=text-align:center>
     <p><label for=datepicker style=display:block;margin-bottom:0;font-variant:all-small-caps>Player birthday</label>
     <input type=date id=datepicker required>
     <p><input type=submit formmethod=dialog value='reveal fate' id=submitButton>

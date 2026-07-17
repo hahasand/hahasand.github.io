@@ -12,6 +12,8 @@ function goodCards(cards) {
     return true;
 }
 
+archidekture = "";
+
 function deal() {
     const cday = new Date();
     let bday = datepicker.valueAsDate; //Date.UTC(2009, 4, 13);
@@ -19,6 +21,7 @@ function deal() {
     let pocky = (bday - epoch) / 8.64e7;
     result.innerHTML = '';
     let lands = 0;
+    archidekture = "";
     for (set of SETS) {
         let rday = set.releaseDate; 
         if (!goodCards(set.cards)) { continue; }
@@ -65,12 +68,20 @@ function deal() {
         if (fatedCard.types.includes('Land')) {
             lands +=1
         }
+        archidekture += '1 ' + fatedCard.name + ' (' + set.code + ') ' + fatedCard.number + '\r\n';
     }
     console.log(lands + ' lands');
 }
 
 function src(scryfallId, size) {
     return 'https://cards.scryfall.io/' + size + '/front/' + scryfallId[0] + '/' + scryfallId[1] + '/' + scryfallId + '.jpg';
+}
+
+function copyArchidekture() {
+    if (!navigator.clipboard) { console.log('Error accessing clipboard >_<"'); }
+    return navigator.clipboard.writeText(archidekture)
+        .then(()=>{ console.log('copy success'); })
+        .catch(()=>{ console.log('copy failure ;_;'); });
 }
 
 </script>
@@ -105,7 +116,7 @@ main {
     background-color: color-mix(Canvas 50%, transparent);
     backdrop-filter: blur(2em);
 }
-input {
+#datepicker, #submitButton {
     font-size: xx-large;
 }
 h1, p {
@@ -122,6 +133,9 @@ h1, p {
         margin: .1em;
     }
 }
+
+body:has(#result:empty) #exportButton { display: none; }
+#exportButton { margin-top: 1em; }
 </style>
 
 <mesmeric-sliver></mesmeric-sliver>
@@ -149,8 +163,10 @@ idk
 <form onsubmit=deal() style=text-align:center>
     <p><label for=datepicker style=display:block;margin-bottom:0;font-variant:all-small-caps>Player birthday</label>
     <input type=date id=datepicker required>
-    <p><input type=submit formmethod=dialog value='reveal fate'>
+    <p><input type=submit formmethod=dialog value='reveal fate' id=submitButton>
 </form>
+
+<p style=text-align:center><input type=button value='Export for Archidekt' id=exportButton onclick=copyArchidekture()></input>
 
 <ol id=result></ol>
 

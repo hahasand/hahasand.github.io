@@ -47,13 +47,13 @@ function deal() {
         let fatedCard = set.cards[pocky % set.cards.length];
         // console.log(set.cards.length + '    ' + set.name + ' ∋ ' + fatedCard.name);
         li = document.createElement('li');
-        li.innerText = set.name + ': ' + fatedCard.name;
+        //li.innerText = set.name + ': ' + fatedCard.name;
         result.append(li);
         img = document.createElement('img');
         img.src = src(fatedCard.scryfallId, 'small');
         img.alt = fatedCard.name;
         img.title = fatedCard.name + ', #' + fatedCard.number + ' from ' + set.name;
-        result.append(img);
+        li.append(img);
         if (fatedCard.types.includes('Land')) {
             lands +=1
         }
@@ -102,6 +102,17 @@ input {
 }
 p {
     text-align: center;
+}
+
+#result {
+    text-align: center;
+    padding: 0;
+    line-height: 0;
+    li {
+        display: inline-block;
+        min-width: 3em;
+        margin: .1em;
+    }
 }
 </style>
 

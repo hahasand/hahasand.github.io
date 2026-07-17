@@ -54,6 +54,7 @@ function deal() {
         ) {
             continue;
         }
+        /*shift dupe sets
         if (
             // Dupe Sets
             set.code=="2ED" || 
@@ -69,7 +70,8 @@ function deal() {
         } else {
             pshift = 0;
         }
-        let card = set.cards[(pocky + pshift) % set.cards.length];
+        */
+        let card = set.cards[pocky % set.cards.length];
         // console.log(set.cards.length + '    ' + set.name + ' ∋ ' + card.name);
         li = document.createElement('li');
         //li.innerText = set.name + ': ' + card.name;

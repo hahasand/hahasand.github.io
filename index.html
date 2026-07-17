@@ -99,6 +99,7 @@ function deal() {
         }
         archidekture += '1 ' + card.name + ' (' + set.code + ') ' + card.number + '\r\n';
     }
+    resultSection.style = 'display:block';
     console.log(lands + ' lands');
 }
 
@@ -207,7 +208,7 @@ h1, p {
     }
 }
 
-body:has(#result:empty) #resultSection { display: none; }
+body:has(#result:empty) #resultSection { display: none; } /* inconsistent on Safari? */
 .lil { width: 1.5em; vertical-align: middle; }
 body:has(#boxW:not(:checked)) li.W { display: none; }
 body:has(#boxU:not(:checked)) li.U { display: none; }

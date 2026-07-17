@@ -29,8 +29,10 @@ function deal() {
             set.type=='archenemy' ||
             set.type=='box' ||
             set.isOnlineOnly==true ||
-            set.name.includes("Special Guest") == true ||
-            set.name.includes("Heroes of the Realm") == true
+            set.name.includes("Special Guest") ||
+            set.name.includes("Decks") ||
+            set.name.includes("Vault") ||
+            set.name.includes("Heroes of the Realm")
         ) {
             continue;
         }

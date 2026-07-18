@@ -81,6 +81,7 @@ function deal() {
         let li = document.createElement('li');
         result.append(li);
         li.classList.add(...card.colors);
+        li.classList.add(...card.types);
         li.style = '--i:' + cardPos++;
         result.style = '--n:' + cardPos;
         let a = document.createElement('a');
@@ -229,6 +230,15 @@ body:has(#boxU:not(:checked)) li.U { display: none; }
 body:has(#boxB:not(:checked)) li.B { display: none; }
 body:has(#boxR:not(:checked)) li.R { display: none; }
 body:has(#boxG:not(:checked)) li.G { display: none; }
+body:has(#boxC:not(:checked)) li.C { display: none; }
+body:has(#boxCre:not(:checked)) li.Creature { display: none; }
+body:has(#boxPla:not(:checked)) li.Planeswalker { display: none; }
+body:has(#boxIns:not(:checked)) li.Instant { display: none; }
+body:has(#boxSor:not(:checked)) li.Sorcery { display: none; }
+body:has(#boxEnc:not(:checked)) li.Enchantment { display: none; }
+body:has(#boxArt:not(:checked)) li.Artifact { display: none; }
+body:has(#boxBat:not(:checked)) li.Battle { display: none; }
+body:has(#boxLan:not(:checked)) li.Land { display: none; }
 filter-boxes {
     display: inline-block;
     border: 1px solid CanvasText;
@@ -289,6 +299,38 @@ TBD
         <label>
             <img src=https://svgs.scryfall.io/card-symbols/G.svg alt=Green class=lil>
             <input type=checkbox id=boxG checked autocomplete=off>
+        </label>
+        <label>
+            <img src=icons/Creature_symbol.svg alt=Creature class=lil>
+            <input type=checkbox id=boxCre checked autocomplete=off>
+        </label>
+        <label>
+            <img src=icons/Planeswalker_symbol.svg alt=Planeswalker class=lil>
+            <input type=checkbox id=boxPla checked autocomplete=off>
+        </label>
+        <label>
+            <img src=icons/Instant_symbol.svg alt=Instant class=lil>
+            <input type=checkbox id=boxIns checked autocomplete=off>
+        </label>
+        <label>
+            <img src=icons/Sorcery_symbol.svg alt=Sorcery class=lil>
+            <input type=checkbox id=boxSor checked autocomplete=off>
+        </label>
+        <label>
+            <img src=icons/Enchantment_symbol.svg alt=Enchantment class=lil>
+            <input type=checkbox id=boxEnc checked autocomplete=off>
+        </label>
+        <label>
+            <img src=icons/Artifact_symbol.svg alt=Artifact class=lil>
+            <input type=checkbox id=boxArt checked autocomplete=off>
+        </label>
+        <label>
+            <img src=icons/Battle_symbol.svg alt=Battle class=lil>
+            <input type=checkbox id=boxBat checked autocomplete=off>
+        </label>
+        <label>
+            <img src=icons/Land_symbol.svg alt=Land class=lil>
+            <input type=checkbox id=boxLan checked autocomplete=off>
         </label>
     </filter-boxes>
     <ol id=result></ol>

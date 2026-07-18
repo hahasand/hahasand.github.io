@@ -204,6 +204,7 @@ h1, p {
             line-height: 2;
             pointer-events: none;
         }
+        transition: all 1s;
     }
 }
 
@@ -219,26 +220,33 @@ h1, p {
     to {
         bottom: 0;
         right: 0;
-        transform: none;
     }
 }
 
 body:has(#result:empty) #resultSection { display: none; } /* inconsistent on Safari? */
 .lil { width: 1.5em; vertical-align: middle; }
-body:has(#boxW:not(:checked)) li.W { display: none; }
-body:has(#boxU:not(:checked)) li.U { display: none; }
-body:has(#boxB:not(:checked)) li.B { display: none; }
-body:has(#boxR:not(:checked)) li.R { display: none; }
-body:has(#boxG:not(:checked)) li.G { display: none; }
-body:has(#boxC:not(:checked)) li.C { display: none; }
-body:has(#boxCre:not(:checked)) li.Creature { display: none; }
-body:has(#boxPla:not(:checked)) li.Planeswalker { display: none; }
-body:has(#boxIns:not(:checked)) li.Instant { display: none; }
-body:has(#boxSor:not(:checked)) li.Sorcery { display: none; }
-body:has(#boxEnc:not(:checked)) li.Enchantment { display: none; }
-body:has(#boxArt:not(:checked)) li.Artifact { display: none; }
-body:has(#boxBat:not(:checked)) li.Battle { display: none; }
-body:has(#boxLan:not(:checked)) li.Land { display: none; }
+
+body:has(#boxW:not(:checked)) li.W,
+body:has(#boxU:not(:checked)) li.U,
+body:has(#boxB:not(:checked)) li.B,
+body:has(#boxR:not(:checked)) li.R,
+body:has(#boxG:not(:checked)) li.G,
+body:has(#boxC:not(:checked)) li.C,
+body:has(#boxCre:not(:checked)) li.Creature,
+body:has(#boxPla:not(:checked)) li.Planeswalker,
+body:has(#boxIns:not(:checked)) li.Instant,
+body:has(#boxSor:not(:checked)) li.Sorcery,
+body:has(#boxEnc:not(:checked)) li.Enchantment,
+body:has(#boxArt:not(:checked)) li.Artifact,
+body:has(#boxBat:not(:checked)) li.Battle,
+body:has(#boxLan:not(:checked)) li.Land,
+body:has(#boxW:not(:checked)) li.W,
+body:has(#boxU:not(:checked)) li.U,
+body:has(#boxB:not(:checked)) li.B,
+body:has(#boxR:not(:checked)) li.R,
+body:has(#boxG:not(:checked)) li.G
+{ opacity: 0.2; }
+
 filter-boxes {
     display: inline-block;
     border: 1px solid CanvasText;

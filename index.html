@@ -80,9 +80,7 @@ function deal() {
             pshift = 0;
         }
         let card = set.cards[(pocky + pshift) % set.cards.length];
-        // console.log(set.cards.length + '    ' + set.name + ' ∋ ' + card.name);
         let li = document.createElement('li');
-        //li.innerText = set.name + ': ' + card.name;
         result.append(li);
         li.classList.add(...card.colors);
         li.style = '--i:' + cardPos++;
@@ -99,6 +97,9 @@ function deal() {
         let back = document.createElement('img');
         back.src = backSrc(card['scryfallCardBackId'] || '0aeebaf5-8c7d-4636-9e82-8c27447861f7', 'small');
         back.classList.add('back');
+        searchable = document.createElement('span');
+        searchable.innerText = front.title;
+        li.append(searchable);
         a.append(front); li.append(back);
         if (card.types.includes('Land')) {
             lands +=1
@@ -198,6 +199,12 @@ h1, p {
         --y: calc(var(--row) * (var(--h) + var(--margin)));
         --initial-z: calc(-.6px * (var(--n) - var(--i)));
         transform-style: preserve-3d; /*?*/
+        span {
+            position: absolute;
+            color: transparent;
+            line-height: 2;
+            pointer-events: none;
+        }
     }
 }
 

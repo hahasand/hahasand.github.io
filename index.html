@@ -10,8 +10,6 @@
 
 function goodCards(cards) {
     if (cards.length<1) { return false; }
-    if (cards.length<1) { return false; }    
-
     return true;
 }
 
@@ -23,7 +21,7 @@ function tryDeal() {
 
 function deal() {
     const cday = new Date();
-    let bday = datepicker.valueAsDate; //Date.UTC(2009, 4, 13);
+    let bday = datepicker.valueAsDate;
     let epoch = Date.UTC(1800, 1, 1);
     let pocky = (bday - epoch) / 8.64e7;
     result.innerHTML = '';
@@ -97,7 +95,7 @@ function deal() {
         let back = document.createElement('img');
         back.src = backSrc(card['scryfallCardBackId'] || '0aeebaf5-8c7d-4636-9e82-8c27447861f7', 'small');
         back.classList.add('back');
-        searchable = document.createElement('span');
+        let searchable = document.createElement('span');
         searchable.innerText = front.title;
         li.append(searchable);
         a.append(front); li.append(back);

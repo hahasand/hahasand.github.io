@@ -166,6 +166,7 @@ h1, p {
     perspective: 1000px;
     transform-style: preserve-3d;
     display: grid;
+    --animation-on: 1;
 
     /* Can't calc unitless quotients >_<" https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/calc#browser_compatibility  */
     --cols: 4;
@@ -188,8 +189,8 @@ h1, p {
         position: relative;
         animation-name: flourish;
         animation-fill-mode: both;
-        animation-duration: calc(2s + 1ms * var(--i));
-        animation-delay: calc(6s * pow((var(--i) + .5), .1) - 5s);
+        animation-duration: calc((2s + 1ms * var(--i)) * var(--animation-on));
+        animation-delay: calc((6s * pow((var(--i) + .5), .1) - 5s) * var(--animation-on));
         --h: 204px;
         --w: 146px;
         --margin: .1em;
@@ -245,7 +246,7 @@ body:has(#boxU:not(:checked)) li.U,
 body:has(#boxB:not(:checked)) li.B,
 body:has(#boxR:not(:checked)) li.R,
 body:has(#boxG:not(:checked)) li.G
-{ opacity: 0.2; }
+{ display: none; }
 
 filter-boxes {
     display: inline-block;
@@ -289,7 +290,7 @@ TBD
     <p style=text-align:center><input type=button value='Export for Archidekt, Moxfield, etc' id=exportButton onclick=copyArchidekture()></input>
 
     <p>Show:<br>
-    <filter-boxes>
+    <filter-boxes onclick="result.style.setProperty('--animation-on',0)">
         <label title=White>
             <img src=https://svgs.scryfall.io/card-symbols/W.svg alt=White class=lil>
             <input type=checkbox id=boxW checked autocomplete=off>

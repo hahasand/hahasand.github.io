@@ -224,7 +224,7 @@ h1, p {
 }
 
 body:has(#result:empty) #resultSection { display: none; } /* inconsistent on Safari? */
-.lil { width: 1.5em; vertical-align: middle; }
+.lil { height: 1.5em; vertical-align: middle; }
 
 body:has(#boxW:not(:checked)) li.W,
 body:has(#boxU:not(:checked)) li.U,
@@ -251,7 +251,7 @@ filter-boxes {
     display: inline-block;
     border: 1px solid CanvasText;
     padding: .5em; margin-left: .5em;
-    label { margin: .5em; }
+    label { margin: .5em; display: inline-block; }
 }
 </style>
 
@@ -288,57 +288,58 @@ TBD
 
     <p style=text-align:center><input type=button value='Export for Archidekt, Moxfield, etc' id=exportButton onclick=copyArchidekture()></input>
 
-    <p>Show:
+    <p>Show:<br>
     <filter-boxes>
-        <label>
+        <label title=White>
             <img src=https://svgs.scryfall.io/card-symbols/W.svg alt=White class=lil>
             <input type=checkbox id=boxW checked autocomplete=off>
         </label>
-        <label>
+        <label title=Blue>
             <img src=https://svgs.scryfall.io/card-symbols/U.svg alt=Blue class=lil>
             <input type=checkbox id=boxU checked autocomplete=off>
         </label>
-        <label>
+        <label title=Black>
             <img src=https://svgs.scryfall.io/card-symbols/B.svg alt=Black class=lil>
             <input type=checkbox id=boxB checked autocomplete=off>
         </label>
-        <label>
+        <label title=Red>
             <img src=https://svgs.scryfall.io/card-symbols/R.svg alt=Red class=lil>
             <input type=checkbox id=boxR checked autocomplete=off>
         </label>
-        <label>
+        <label title=Green>
             <img src=https://svgs.scryfall.io/card-symbols/G.svg alt=Green class=lil>
             <input type=checkbox id=boxG checked autocomplete=off>
         </label>
-        <label>
+        <br>
+        <label title=Creature>
             <img src=icons/Creature_symbol.svg alt=Creature class=lil>
             <input type=checkbox id=boxCre checked autocomplete=off>
         </label>
-        <label>
+        <label title=Planeswalker>
             <img src=icons/Planeswalker_symbol.svg alt=Planeswalker class=lil>
             <input type=checkbox id=boxPla checked autocomplete=off>
         </label>
-        <label>
+        <label title=Instant>
             <img src=icons/Instant_symbol.svg alt=Instant class=lil>
             <input type=checkbox id=boxIns checked autocomplete=off>
         </label>
-        <label>
+        <label title=Sorcery>
             <img src=icons/Sorcery_symbol.svg alt=Sorcery class=lil>
             <input type=checkbox id=boxSor checked autocomplete=off>
         </label>
-        <label>
+        <label title=Enchantment>
             <img src=icons/Enchantment_symbol.svg alt=Enchantment class=lil>
             <input type=checkbox id=boxEnc checked autocomplete=off>
         </label>
-        <label>
+        <label title=Artifact>
             <img src=icons/Artifact_symbol.svg alt=Artifact class=lil>
             <input type=checkbox id=boxArt checked autocomplete=off>
         </label>
-        <label>
+        <label title=Battle>
             <img src=icons/Battle_symbol.svg alt=Battle class=lil>
             <input type=checkbox id=boxBat checked autocomplete=off>
         </label>
-        <label>
+        <label title=Land>
             <img src=icons/Land_symbol.svg alt=Land class=lil>
             <input type=checkbox id=boxLan checked autocomplete=off>
         </label>
